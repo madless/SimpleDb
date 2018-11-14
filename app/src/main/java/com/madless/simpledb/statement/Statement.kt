@@ -1,5 +1,5 @@
 package com.madless.simpledb.statement
 
-interface Statement {
-    fun execute()
+interface Statement<T> {
+    fun execute(): T
 }

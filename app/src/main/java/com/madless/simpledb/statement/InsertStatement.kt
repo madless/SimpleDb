@@ -1,8 +1,10 @@
 package com.madless.simpledb.statement
 
-class InsertStatement(val tableName: String, val values: List<String>): Statement {
-    override fun execute() {
+import com.madless.simpledb.DataBaseHandler
 
+class InsertStatement(val tableName: String, val values: List<String>): Statement<Unit> {
+    override fun execute() {
+        DataBaseHandler.insert(this)
     }
 
     fun getAllValues() : String {

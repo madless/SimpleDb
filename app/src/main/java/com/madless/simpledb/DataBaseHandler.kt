@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.madless.simpledb.statement.CreateStatement
+import com.madless.simpledb.statement.DropStatement
 import com.madless.simpledb.statement.InsertStatement
 import com.madless.simpledb.statement.SelectStatement
 import java.util.*
@@ -48,6 +49,12 @@ object DataBaseHandler {
     fun insert(statement: InsertStatement) {
         val request = "INSERT INTO ${statement.tableName} VALUES (${statement.getAllValues()});"
         Log.d("madtag", "insert request $request")
+        db.execSQL(request)
+    }
+
+    fun drop(statement: DropStatement) {
+        val request = "DROP TABLE ${statement.param} ${statement.tableName}"
+        Log.d("madtag", "drop request $request")
         db.execSQL(request)
     }
 
