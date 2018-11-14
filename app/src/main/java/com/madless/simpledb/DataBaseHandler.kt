@@ -8,6 +8,7 @@ import com.madless.simpledb.statement.CreateStatement
 import com.madless.simpledb.statement.InsertStatement
 import com.madless.simpledb.statement.SelectStatement
 import java.util.*
+import kotlin.collections.LinkedHashMap
 
 
 object DataBaseHandler {
@@ -60,7 +61,7 @@ object DataBaseHandler {
         val cursor = db.rawQuery(request, null)
         val result = ArrayList<Map<String, String>>()
         while (cursor.moveToNext()) {
-            val map = TreeMap<String, String>()
+            val map = LinkedHashMap<String, String>()
             for (columnName in cursor.columnNames) {
                 val index = cursor.getColumnIndex(columnName)
                 val value = cursor.getString(index)
